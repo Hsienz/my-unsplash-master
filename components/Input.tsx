@@ -10,6 +10,7 @@ const Input:React.FC<Props> = ({label,id,placeholder}) => {
 			<label className="p text-normal_gray" htmlFor={id}>{label}</label>
 			<input
 				id={id}
+                name={id}
 				className="input"
 				placeholder={placeholder}
 			/>

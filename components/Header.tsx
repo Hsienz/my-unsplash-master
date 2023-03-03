@@ -17,6 +17,10 @@ const Header = () => {
 		else return login();
 	};
     const handleAddPhoto = () => {
+        if(!user) {
+            alert('Please login!!')
+            return
+        }
         setComponent((<Upload />))
     }
 	return (
@@ -44,6 +48,20 @@ const Header = () => {
 				</div>
 			</div>
 			<div className="flex gap-4">
+				{user && (
+					<div className="flex items-center gap-2">
+						{user.photoURL && (
+							<Image
+								src={user.photoURL}
+								alt=""
+								width={40}
+								height={40}
+								className="rounded-full"
+							/>
+						)}
+                        {user.displayName}
+					</div>
+				)}
 				<button className="special btn" onClick={handleLogin}>
 					Sign {user ? "out" : "in"}
 				</button>

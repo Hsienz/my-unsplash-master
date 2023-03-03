@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer components {
+    body {
+        @apply p-16
+    }
+    .btn {
+        @apply rounded-[8px] px-4 py-2 transition-all duration-300 hover:brightness-125
+    }
+    .img {
+        @apply rounded-[16px]
+    }
+    .functional {
+        @apply bg-green text-white
+    }
+    .delete {
+        @apply border-red border-solid border-2 text-red bg-transparent
+    }
+    .warning {
+        @apply bg-red text-white
+    }
+    .special {
+        @apply border-solid border-2 border-green text-green bg-transparent
+    }
+    .jump {
+        @apply bg-white rounded-[12px] px-[32px] py-[24px]
+    }
+    .input {
+        @apply p-[18px] placeholder:text-light_gray p rounded-[12px] outline-none border-normal_gray border-solid border-2
+    }
+    .cancel {
+        @apply text-light_gray
+    }
+    .p {
+        @apply text-[14px] leading-[19px]
+    }
+    h2 {
+        @apply text-[24px] text-dark_gray leading-[33px]
+    }
+}

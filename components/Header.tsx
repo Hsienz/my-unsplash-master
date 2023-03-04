@@ -10,29 +10,29 @@ const Header = () => {
 	const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
 		setValue((value) => e.target.value);
 	};
-    const {setComponent} = useJumpUp()
+	const { setComponent } = useJumpUp();
 	const [user] = useAuthState(auth);
 	const handleLogin = () => {
 		if (user) return logout();
 		else return login();
 	};
-    const handleAddPhoto = () => {
-        if(!user) {
-            alert('Please login!!')
-            return
-        }
-        setComponent((<Upload />))
-    }
+	const handleAddPhoto = () => {
+		if (!user) {
+			alert("Please login!!");
+			return;
+		}
+		setComponent(<Upload />);
+	};
 	return (
 		<div className="flex justify-between">
-			<div className="flex gap-8">
+			<div className="flex flex-col xl:flex-row gap-4">
 				<Image
 					src="/assets/my_unsplash_logo.svg"
 					alt=""
 					width={200}
 					height={50}
 				/>
-				<div className="relative flex px-4 gap-4 border-solid border-2 rounded-[12px] overflow-hidden border-light_gray rounded-">
+				<div className="relative flex py-2 px-4 gap-4 border-solid border-2 rounded-[12px] overflow-hidden border-light_gray">
 					<Image
 						width={20}
 						height={20}
@@ -47,9 +47,9 @@ const Header = () => {
 					/>
 				</div>
 			</div>
-			<div className="flex gap-4">
+			<div className="flex gap-4 lg:h-[55px]">
 				{user && (
-					<div className="flex items-center gap-2">
+					<div className="flex items-center gap-2 mb-auto lg:m-auto">
 						{user.photoURL && (
 							<Image
 								src={user.photoURL}
@@ -59,18 +59,16 @@ const Header = () => {
 								className="rounded-full"
 							/>
 						)}
-                        {user.displayName}
 					</div>
 				)}
-				<button className="special btn" onClick={handleLogin}>
-					Sign {user ? "out" : "in"}
-				</button>
-				<button
-					onClick={handleAddPhoto}
-					className="functional btn"
-				>
-					Add a photo
-				</button>
+				<div className="flex flex-col lg:flex-row gap-[inherit] justify-between">
+					<button className="special btn" onClick={handleLogin}>
+						Sign {user ? "out" : "in"}
+					</button>
+					<button onClick={handleAddPhoto} className="functional btn">
+						Add a photo
+					</button>
+				</div>
 			</div>
 		</div>
 	);
